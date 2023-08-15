@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "WinFormsSystemEventsHangRepro": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
