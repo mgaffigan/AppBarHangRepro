@@ -96,11 +96,15 @@ Use a custom `ApplicationContext` which ensures the `SystemEvents` thread is not
         {
         }
 
+        [DllImport("user32.dll")]
+        static extern void PostQuitMessage(int nExitCode);
+
         protected override void OnMainFormClosed(object sender, EventArgs e)
         {
             var syncCtx = SynchronizationContext.Current;
             SystemEvents.InvokeOnEventsThread(() =>
             {
+                PostQuitMessage(0);
                 syncCtx.Post((_) =>
                 {
                     ExitThread();
